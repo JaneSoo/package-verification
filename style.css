@@ -1,0 +1,22 @@
+#packageSelection{
+  min-width: 300px;
+  max-width: 400px;
+  min-height: 30px;
+  margin: 10px;
+}
+
+#verifyBtn{
+  height: 30px;
+  margin: 10px;
+  background-color: #28BEF2;
+  border-color: none;
+  text-decoration-color: white;
+  color: white;
+  border-radius: 2px;
+  border: none
+}
+
+.select-label{
+  font-size:small;
+  margin: 10px;
+}
