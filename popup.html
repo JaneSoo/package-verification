@@ -2,20 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/style.css">
   <title>Verify dataset</title>
 </head>
-<body>
+<body class="extension-body">
   <div align="center">
     <img src="./icons/news-32.png">
     <h3>Dataset verification</h3>
   </div>
-  <label for="packages" class="select-label">Select package to veify:</label>
+  <div id="wait" align="center"></div>
+  <label for="packages" class="select-label" id="select-label-id">Select package to verify:</label>
 
-  <div align="center" hidden id="checkImg">
-    <img src="./icons/check.png">
+  <div align="center" hidden id="div-img">
   </div>
 
   <script src="./dist/node-fetch-bundle.js"></script>

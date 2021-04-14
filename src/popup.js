@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //get packages data from background
   const bg = chrome.extension.getBackgroundPage();
 
+  //url where extension is activated
   const currentUrl = bg.currentUrl;
 
   //create select option to list packages
@@ -24,10 +25,22 @@ document.addEventListener("DOMContentLoaded", function () {
   btn.id = "verifyBtn";
   document.body.appendChild(btn);
 
+  const spinning = document.getElementById('wait');
+  const selectLabel = document.getElementById('select-label-id');
+  const selectOptionElement = document.getElementById('packageSelection');
+  const verifyBtn = document.getElementById('verifyBtn');
+  const imgDiv = document.getElementById('div-img');
+  const img = document.createElement('img');
+  const caption = document.createElement('p')
+
   // get package value
   btn.onclick = function(){
     const selectOption = document.getElementById("packageSelection");
     const selectedPackage = selectOption.value;
+    selectLabel.hidden = true;
+    selectOptionElement.hidden = true;
+    verifyBtn.hidden = true;
+    spinning.classList.add('loader');
     fetchResult(selectedPackage, currentUrl)
   }
 
@@ -36,13 +49,35 @@ document.addEventListener("DOMContentLoaded", function () {
     var result;
     var bodyParams = {package: `${package}`, url: `${currentUrl}`}
 
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+    headers.append('Access-Control-Allow-Credentials', 'true');
+    headers.append('GET', 'POST', 'OPTIONS');
+
     fetch('http://localhost:3000/requestPackageHash', { 
       method: 'POST', 
       body: JSON.stringify(bodyParams),
-      headers: { 'Content-Type': 'application/json' } 
+      headers: headers
     })
     .then(res => res.json())
-    .then(json => alert(JSON.stringify(json)));
+    .then(json => {
+      if(json.result == 'True'){
+        img.setAttribute('src', '../icons/check.png');
+        spinning.classList.remove('loader');
+        imgDiv.appendChild(img);
+        caption.innerText = `The package "${package}" is verified!`;
+        imgDiv.appendChild(caption);
+        imgDiv.hidden = false;
+      } else {
+        img.setAttribute('src', '../icons/incorrect.png');
+        spinning.classList.remove('loader');
+        imgDiv.appendChild(img);
+        caption.innerText = `The package "${package}" is not verified!`
+        imgDiv.appendChild(caption);
+        imgDiv.hidden = false;
+      }
+    });
   }
   
 }, false)

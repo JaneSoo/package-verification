@@ -24,6 +24,7 @@
   "permissions": [
     "tabs",
     "http://*/",
-    "https://*/"
+    "https://*/",
+    "http://localhost:3000/requestPackageHash"
   ]
 }
