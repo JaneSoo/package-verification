@@ -69,6 +69,14 @@ document.addEventListener("DOMContentLoaded", function () {
         caption.innerText = `The package "${package}" is verified!`;
         imgDiv.appendChild(caption);
         imgDiv.hidden = false;
+      }
+      else if (json.result == 'Transaction not found!'){
+        img.setAttribute('src', '../icons/incorrect.png');
+        spinning.classList.remove('loader');
+        imgDiv.appendChild(img);
+        caption.innerText = `The package "${package}" has not pushed to blockchain yet!`
+        imgDiv.appendChild(caption);
+        imgDiv.hidden = false;
       } else {
         img.setAttribute('src', '../icons/incorrect.png');
         spinning.classList.remove('loader');
