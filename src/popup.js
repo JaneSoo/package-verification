@@ -46,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //fetch package verification result from backend api
   function fetchResult(package, currentUrl) {
-    var result;
     var bodyParams = {package: `${package}`, url: `${currentUrl}`}
 
     let headers = new Headers();
@@ -62,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .then(res => res.json())
     .then(json => {
-      if(json.result == 'True'){
+      if(json.result == true){
         img.setAttribute('src', '../icons/check.png');
         spinning.classList.remove('loader');
         imgDiv.appendChild(img);

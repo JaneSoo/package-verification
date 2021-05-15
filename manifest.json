@@ -10,8 +10,7 @@
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
-      "css": ["style.css"],
-      "js": ["./src/background.js"]
+      "css": ["style.css"]
     }
   ],
   "background": {
