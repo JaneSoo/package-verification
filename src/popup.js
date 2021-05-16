@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         img.setAttribute('src', '../icons/check.png');
         spinning.classList.remove('loader');
         imgDiv.appendChild(img);
-        caption.innerText = `The package "${package}" is verified!`;
+        caption.innerText = `The package "${package}" is identical!`;
         imgDiv.appendChild(caption);
         imgDiv.hidden = false;
       }
@@ -76,11 +76,19 @@ document.addEventListener("DOMContentLoaded", function () {
         caption.innerText = `The package "${package}" has not pushed to blockchain yet!`
         imgDiv.appendChild(caption);
         imgDiv.hidden = false;
+      }
+      else if(json.result == 'Error downloading package'){
+        img.setAttribute('src', '../icons/incorrect.png');
+        spinning.classList.remove('loader');
+        imgDiv.appendChild(img);
+        caption.innerText = `Cannot download package "${package}" at the moment.`
+        imgDiv.appendChild(caption);
+        imgDiv.hidden = false;
       } else {
         img.setAttribute('src', '../icons/incorrect.png');
         spinning.classList.remove('loader');
         imgDiv.appendChild(img);
-        caption.innerText = `The package "${package}" is not verified!`
+        caption.innerText = `The package "${package}" is not identical!`
         imgDiv.appendChild(caption);
         imgDiv.hidden = false;
       }
