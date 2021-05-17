@@ -10,3 +10,8 @@ Package verification is possible to verify only if the transaction has been push
 Package-verification uses browserify to enable usage of node module in Javascript:
 - Install [Browserify](http://browserify.org/)
 - Install node and `run npm install`
+
+### To spin up the extention
+- Upload the project folder to chrome://extensions/
+- From there select "load unpacked"
+- Then, it will be possible to see the logo of the extension and pin for futher use
