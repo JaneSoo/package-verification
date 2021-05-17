@@ -12,6 +12,12 @@ Package-verification uses browserify to enable usage of node module in Javascrip
 - Install node and `run npm install`
 
 ### To spin up the extention
-- Upload the project folder to chrome://extensions/
-- From there select "load unpacked"
-- Then, it will be possible to see the logo of the extension and pin for futher use
+- Upload the project folder to `chrome://extensions/`
+- From there select `load unpacked`
+- Then, it will be possible to see the logo of the extension and pin for further use
+
+**Note**
+
+This chrome extension fetches API from another [web app](https://github.com/JaneSoo/ckan-to-blockchain-ui).
+
+It is neccessary to keep the web app running in order to perform verification.
